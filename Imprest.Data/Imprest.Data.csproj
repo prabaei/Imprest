@@ -45,6 +45,7 @@
     <Compile Include="Facct\FacctDb.cs" />
     <Compile Include="Facct\IFacctDb.cs" />
     <Compile Include="IDataConnection.cs" />
+    <Compile Include="ISingleton.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Singleton.cs" />
   </ItemGroup>

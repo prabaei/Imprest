@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Imprest.Data.Facct
 {
-    interface IFacctDb
+    public interface IFacctDb
     {
         
         bool IsTableExist(string tablename);

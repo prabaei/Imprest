@@ -32,7 +32,7 @@ namespace Imprest.Data
 
         public  void openConnection()
         {
-            if (sqlobject.State != System.Data.ConnectionState.Open)
+            if (sqlobject.State == System.Data.ConnectionState.Closed)
             sqlobject.Open();
         }
      

@@ -26,6 +26,12 @@ namespace Imprest
             bundles.Add(new StyleBundle("~/Content/css").Include(
                       "~/Content/bootstrap.css",
                       "~/Content/site.css"));
+
+            bundles.Add(new StyleBundle("~/Content/JqueryUI").Include(
+                "~/Content/JqueryUI/jquery-ui.css"
+                ));
+            bundles.Add(new ScriptBundle("~/bundles/JqueryUI").Include(
+                      "~/Scripts/JqueryUI/jquery-ui.min.js"));
         }
     }
 }

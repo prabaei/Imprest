@@ -209,6 +209,7 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\AccountViewModels.cs" />
+    <Compile Include="Models\Facct\Voucher.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -217,6 +218,23 @@
   <ItemGroup>
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\JqueryUI\images\ui-bg_glass_55_fbf9ee_1x400.png" />
+    <Content Include="Content\JqueryUI\images\ui-bg_glass_65_ffffff_1x400.png" />
+    <Content Include="Content\JqueryUI\images\ui-bg_glass_75_dadada_1x400.png" />
+    <Content Include="Content\JqueryUI\images\ui-bg_glass_75_e6e6e6_1x400.png" />
+    <Content Include="Content\JqueryUI\images\ui-bg_glass_95_fef1ec_1x400.png" />
+    <Content Include="Content\JqueryUI\images\ui-bg_highlight-soft_75_cccccc_1x100.png" />
+    <Content Include="Content\JqueryUI\images\ui-icons_222222_256x240.png" />
+    <Content Include="Content\JqueryUI\images\ui-icons_2e83ff_256x240.png" />
+    <Content Include="Content\JqueryUI\images\ui-icons_454545_256x240.png" />
+    <Content Include="Content\JqueryUI\images\ui-icons_888888_256x240.png" />
+    <Content Include="Content\JqueryUI\images\ui-icons_cd0a0a_256x240.png" />
+    <Content Include="Content\JqueryUI\jquery-ui.css" />
+    <Content Include="Content\JqueryUI\jquery-ui.min.css" />
+    <Content Include="Content\JqueryUI\jquery-ui.structure.css" />
+    <Content Include="Content\JqueryUI\jquery-ui.structure.min.css" />
+    <Content Include="Content\JqueryUI\jquery-ui.theme.css" />
+    <Content Include="Content\JqueryUI\jquery-ui.theme.min.css" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
@@ -236,6 +254,7 @@
     <Content Include="Scripts\jquery.validate.min.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
+    <Content Include="Scripts\JqueryUI\jquery-ui.min.js" />
     <Content Include="Scripts\modernizr-2.6.2.js" />
     <Content Include="Scripts\respond.js" />
     <Content Include="Scripts\respond.min.js" />
@@ -286,6 +305,12 @@
     <Content Include="packages.config" />
     <None Include="Project_Readme.html" />
     <Content Include="Scripts\jquery-1.10.2.min.map" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Imprest.Data\Imprest.Data.csproj">
+      <Project>{9764f5a4-9583-467d-ae39-b26057d064fe}</Project>
+      <Name>Imprest.Data</Name>
+    </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

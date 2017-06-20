@@ -36,9 +36,11 @@ namespace testConsole
                 }
                 
                 table_exist = _facct.IsTableExist(getTableName(searchfrom++));
+                table_exist = vouchlist.Count > 7 ? false : true;
                 //vouchlist.Clear();
               // var data= vouchlist.GroupBy(m => m.voucherNo,(key,g)=>new Voucher() {count=g.Count(),voucherNo=key }).ToList();
             }
+            //return vouchlist.Take(7).ToList();
         }
 
         private static string getTableName(int searchfrom)

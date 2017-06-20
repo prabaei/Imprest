@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Imprest.Data.Facct;
+using Imprest.Data;
 
 namespace Imprest.Data
 {
@@ -11,7 +12,7 @@ namespace Imprest.Data
     {
        
          static T singleObject;
-        public static T getInstance()
+        public static  T getInstance()
         {
            if(singleObject != null)
             {

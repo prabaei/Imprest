@@ -5,5 +5,27 @@
 
 <h2>Entry</h2>
 
+<input type="text" id="voucherNo"/>
 
+<script>
+    $("#voucherNo").autocomplete({
+        source: function (request, response) {
+            $.ajax({
+                url: "@Url.Action("getVoucherList", "VoucherEntry", new { area = "" })",
+                type: "POST",
+                dataType: "json",
+                data: { voucherNO: request.term },
+                success: function (data) {
+                    console.log(data);
+                    response($.map(data, function (item) {
+                        return { label: item.voucherNo, value: item.count };
+                    }))
+                }
+            })
+        }, select: function (event, ui) {
+
+           
+        },
+    });
+</script>
 

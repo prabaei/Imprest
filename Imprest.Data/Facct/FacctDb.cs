@@ -16,6 +16,7 @@ namespace Imprest.Data.Facct
 
         public SqlDataReader getVoucherNo(string command)
         {
+            //openConnection();
             using (SqlCommand _cmd = new SqlCommand(command, sqlobject))
             {
                 try
@@ -34,6 +35,7 @@ namespace Imprest.Data.Facct
 
         public bool IsTableExist(string tablename)
         {
+            //openConnection();
             string command = string.Format("select case when exists((select * from information_schema.tables where table_name = '{0}'))then 1 else 0 end", tablename);
             using (SqlCommand _cmd = new SqlCommand(command,sqlobject))
             {
