@@ -25,6 +25,7 @@ namespace Imprest.Controllers
         }
 
         #region AutocompleteRequest
+        [HttpPost]
         public JsonResult getVoucherList(string voucherNO)
         {
            var voucherLIst= getvoucherFacct(voucherNO);
@@ -38,6 +39,7 @@ namespace Imprest.Controllers
         public List<Voucher> getvoucherFacct(string voucherNO)
         {
             DateTime t = DateTime.Now;
+            int top = 7;
             int year = t.Year;
             int searchfrom = year - 2;
             //getTableName(searchfrom);
@@ -45,7 +47,7 @@ namespace Imprest.Controllers
             List<Voucher> vouchlist = new List<Voucher>();
             while (table_exist)
             {
-                string command = string.Format("SELECT TOP 7 COUNT(VRNO) AS Vcount,VRNO FROM {0} GROUP BY VRNO HAVING VRNO LIKE '%{1}%'", getTableName(searchfrom), voucherNO);
+                string command = string.Format("SELECT TOP {2} COUNT(VRNO) AS Vcount,VRNO FROM {0} GROUP BY VRNO HAVING VRNO LIKE '%{1}%'", getTableName(searchfrom), voucherNO,top);
 
                 SqlDataReader allVoucher = _facct.getVoucherNo(command);
                 while (allVoucher.Read())
@@ -55,13 +57,23 @@ namespace Imprest.Controllers
                     vouch.count = Convert.ToInt32(allVoucher["Vcount"]);
                     vouchlist.Add(vouch);
                 }
+                searchfrom++;
+                vouchlist=vouchlist.GroupBy(m => m.voucherNo, (key, g) => new Voucher() { count = g.Sum(m=>m.count), voucherNo = key }).ToList();
+                table_exist = _facct.IsTableExist(getTableName(searchfrom));
+                if (table_exist)
+                {
+                    table_exist = vouchlist.Count < 7 ? true : false;
+                    if (table_exist)
+                    {
+                        if(vouchlist.Count<7)
+                        top = 7 - vouchlist.Count;
 
-                table_exist = _facct.IsTableExist(getTableName(searchfrom+1));
-                
+                    }
+                }
                 //vouchlist.Clear();
                 // var data= vouchlist.GroupBy(m => m.voucherNo,(key,g)=>new Voucher() {count=g.Count(),voucherNo=key }).ToList();
             }
-            return vouchlist.ToList();
+            return vouchlist.Take(7).ToList();
             
         }
         private static string getTableName(int searchfrom)

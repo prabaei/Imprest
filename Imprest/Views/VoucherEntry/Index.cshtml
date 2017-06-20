@@ -4,7 +4,11 @@
 }
 
 <h2>Entry</h2>
-
+<style>
+    .ui-menu-item{
+        background-color:beige;
+    }
+</style>
 <input type="text" id="voucherNo"/>
 
 <script>
@@ -16,16 +20,22 @@
                 dataType: "json",
                 data: { voucherNO: request.term },
                 success: function (data) {
-                    console.log(data);
+                    //console.log(data);
                     response($.map(data, function (item) {
                         return { label: item.voucherNo, value: item.count };
                     }))
                 }
             })
         }, select: function (event, ui) {
-
-           
+            event.preventDefault();
+            $("#voucherNo").val(ui.item.label);
         },
-    });
+    }).autocomplete("instance")._renderItem = function (ul, item) {
+        //console.log(item);
+        return $("<li>")
+          .append("<div >" + item.label + "    <span class='badge' style='float:right'>" + item.value + "</span></div>")
+          .appendTo(ul);
+    };
 </script>
 
+<div style='float:right'></div>
