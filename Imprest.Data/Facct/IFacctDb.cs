@@ -12,6 +12,6 @@ namespace Imprest.Data.Facct
         
         bool IsTableExist(string tablename);
 
-        SqlDataReader getVoucherNo(string command);
+        SqlDataReader getFromFacct(string command);
     }
 }

@@ -14,7 +14,7 @@ namespace Imprest.Data.Facct
             openConnection();
         }
 
-        public SqlDataReader getVoucherNo(string command)
+        public SqlDataReader getFromFacct(string command)
         {
             //openConnection();
             using (SqlCommand _cmd = new SqlCommand(command, sqlobject))

@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using Imprest.Data;
 using Imprest.Data.Facct;
 using System.Data.SqlClient;
+using System.IO;
 
 namespace testConsole
 {
@@ -14,7 +15,7 @@ namespace testConsole
          public static FacctDb _facct = Singleton<FacctDb>.getInstance();
         static void Main(string[] args)
         {
-            
+            readfromtext();
             //if (_facct.IsTableExist("VOU1119"))
             //    Console.WriteLine("table exist");
             DateTime t = DateTime.Now;
@@ -26,7 +27,7 @@ namespace testConsole
             while (table_exist)
             {
                 string command = string.Format("SELECT TOP 7 COUNT(VRNO) AS Vcount,VRNO FROM {0} GROUP BY VRNO HAVING VRNO LIKE '%{1}%'", getTableName(searchfrom), "C");
-                SqlDataReader allVoucher =  _facct.getVoucherNo(command);
+                SqlDataReader allVoucher =  _facct.getFromFacct(command);
                 while(allVoucher.Read())
                 {
                     Voucher vouch = new Voucher();
@@ -43,6 +44,28 @@ namespace testConsole
             //return vouchlist.Take(7).ToList();
         }
 
+        public static void readfromtext()
+        {
+            var fileStream = new FileStream(@"C:\accountgit\Imprest\Imprest\acc.txt", FileMode.Open, FileAccess.Read);
+            using (var streamReader = new StreamReader(fileStream, Encoding.UTF8))
+            {
+                using (StreamWriter writer =
+            new StreamWriter(@"C:\accountgit\Imprest\Imprest\insert.txt"))
+                {
+                    string line;
+                while ((line = streamReader.ReadLine()) != null)
+                {
+                    string[] strarray = line.Split('\t');
+                    
+                        writer.WriteLine(string.Format("insert into AccountMaster values ({0},'{1}','{2}','{3}','{4}','{5}',{6})", strarray));
+                    }
+                    //Console.WriteLine(string.Format("insert into AccountMaster values ({0},'{1}','{2}','{3}','{4}','{5}',{6})",strarray));
+                    
+                    //Console.WriteLine(line.Split('\t')); 
+                    //Console.WriteLine();
+                }
+            }
+        }
         private static string getTableName(int searchfrom)
         {
             int searchshort = searchfrom % 1000;
