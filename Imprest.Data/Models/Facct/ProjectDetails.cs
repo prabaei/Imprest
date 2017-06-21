@@ -15,7 +15,13 @@ namespace Imprest.Data.Models.Facct
 
         public int projectType { get; set; }
         public string projectNo { get; set; }
-        
+
+        public string voucherNo { get; set; }
+        public decimal Amount { get; set; }
+       
+        public string chequno { get; set; }
+
+        public string comno { get; set; }
         
     }
 }

@@ -1,5 +1,5 @@
 ﻿@using Imprest.Data.Models.Facct
-@model IEnumerable<VoucherDetails>
+@model IEnumerable<ProjectDetails>
 
 <style>
     #voudetailTable tr{
@@ -9,21 +9,76 @@
     #voudetailTable tr:hover {
         background-color:antiquewhite;
     }
-    #voudetailTable tr:active {
-        background-color:bisque;
-       
+   
+    td{
+        text-align:center;
+        padding:12px;
     }
+    #TableHeading tr  td{
+        font:bold;
+    }
+  
 </style>
+<table style="border:solid red 2px" id="TableHeading">
+    <tr>
+        <td>voucher no</td>
+        <td>commitment no</td>
+        <td>Amount</td>
+        <td>ProjectNO</td>
+        <td>Name</td>
+        <td>ProjectType</td>
+        <td>Action</td>
+    </tr>
+</table>
 
-<table class="table" id="voudetailTable" style="display:block">
-    @foreach (var rec in Model ?? new List<VoucherDetails>())
+<table  id="voudetailTable" style="display:block">
+    @foreach (var rec in Model ?? new List<ProjectDetails>())
     {
     <tr>
         <td>@rec.voucherNo</td>
-        <td>@rec.Amount</td>
-        <td>@rec.NPRNO</td>
-        <td>@rec.ICCNO</td>
         <td>@rec.comno</td>
+        <td>@rec.Amount</td>
+        <td>@rec.projectNo</td>
+        <td>@rec.coorname</td>
+        <td>@rec.projectType</td>
+        <td><button>Pick</button></td>
     </tr>
     }
 </table>
+<script>
+    $(document).ready(function () {
+        var arrOfTable1 = [0,0,0,0,0,0,0];
+        var tableEle=[];
+    i = 0;
+        $("#voudetailTable  td").each(function (ind, ele) {
+           // console.log(Math.max($(this).width(),arrOfTable1[i]));
+            //tableEle.push($(this));
+            arrOfTable1[i]=(Math.max($(this).width(), arrOfTable1[i]));
+            i++;
+            if (i == 7) {
+                i = 0;
+            }
+        });
+        i = 0;
+        $("#TableHeading td").each(function (ind, ele) {
+            var colwidth = $(this).width();
+            arrOfTable1[i]=((Math.max(arrOfTable1[i], colwidth)));
+            $(this).width(arrOfTable1[i]);
+            i++;
+        });
+        i = 0;
+        $("#voudetailTable  td").each(function (ind, ele) {
+            //console.log(Math.max($(this).width(), arrOfTable1[i]));
+            //tableEle.push($(this));
+            //arrOfTable1.push(Math.max($(this).width(), arrOfTable1[i]));
+            console.log($(this));
+            console.log(i);
+            $(this).width(arrOfTable1[i]);
+            i++
+            if (i == 7) {
+                i = 0;
+            }
+        });
+
+    });
+</script>

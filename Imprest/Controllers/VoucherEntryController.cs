@@ -36,7 +36,7 @@ namespace Imprest.Controllers
         {
             var voucherList = _facctservice.getvoucherDetailList(voucherNO);
            var projectDetails= _facctservice.getProjectDetails(voucherList);
-            return PartialView(voucherList as IEnumerable<VoucherDetails>);
+            return PartialView(projectDetails as IEnumerable<ProjectDetails>);
         }
         #endregion
         

@@ -109,14 +109,14 @@ namespace Imprest.Data.Facct
             return vouchlist.ToList();
         }
 
-        public IEnumerable<VoucherDetails> getProjectDetails(IEnumerable<VoucherDetails> vouchDetails)
+        public IEnumerable<ProjectDetails> getProjectDetails(IEnumerable<VoucherDetails> vouchDetails)
         {
             string nprno = string.Empty;
             string cprno = string.Empty;
             string mstlstCmd = string.Empty;
             string cmstlstCmd = string.Empty;
 
-            List<VoucherDetails> ProjDetailslist = new List<VoucherDetails>();
+            List<ProjectDetails> ProjDetailslist = new List<ProjectDetails>();
             foreach(var single in vouchDetails)
             {
                 if (!string.IsNullOrEmpty(single.NPRNO))
@@ -134,12 +134,16 @@ namespace Imprest.Data.Facct
                     SqlDataReader dr = _facct.getFromFacct(mstlstCmd);
                     while (dr.Read())
                     {
-                        VoucherDetails ProjDetails = new VoucherDetails();
+                        ProjectDetails ProjDetails = new ProjectDetails();
                         ProjDetails.InstituteId = Convert.ToString(dr["INSTID"] ?? "");
                         ProjDetails.coorname = Convert.ToString(dr["COOR_NAME"] ?? "");
                         ProjDetails.projectNo = Convert.ToString(dr["NPRNO"]) ?? "";
                         ProjDetails.title = Convert.ToString(dr["TITLE"]) ?? "";
                         ProjDetails.projectType = Convert.ToInt32(dr["PT"]);
+                        ProjDetails.Amount = single.Amount;
+                        ProjDetails.chequno = single.chequno;
+                        ProjDetails.comno = single.comno;
+                        ProjDetails.voucherNo = single.voucherNo;
                         ProjDetailslist.Add(ProjDetails);
                     }
                 }
@@ -154,6 +158,10 @@ namespace Imprest.Data.Facct
                         ProjDetails.projectNo = Convert.ToString(dr["CPRNO"]) ?? "";
                         ProjDetails.title = Convert.ToString(dr["C_TITLE"]) ?? "";
                         ProjDetails.projectType = Convert.ToInt32(dr["PT"]);
+                        ProjDetails.Amount = single.Amount;
+                        ProjDetails.chequno = single.chequno;
+                        ProjDetails.comno = single.comno;
+                        ProjDetails.voucherNo = single.voucherNo;
                         ProjDetailslist.Add(ProjDetails);
                     }
                 }

@@ -16,11 +16,6 @@ namespace Imprest.Data.Models.Facct
     
         public string comno { get; set; }
         
-        public string InstituteId { get; set; }
-        public string coorname { get; set; }
-
-        public string title { get; set; }
-
-        public int projectType { get; set; }
+        
     }
 }
