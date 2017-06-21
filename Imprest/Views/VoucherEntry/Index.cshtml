@@ -11,6 +11,10 @@
 </style>
 <input type="text" id="voucherNo"/>
 
+<div id="voucherDetails">
+    
+</div>
+
 <script>
     $("#voucherNo").autocomplete({
         source: function (request, response) {
@@ -29,6 +33,16 @@
         }, select: function (event, ui) {
             event.preventDefault();
             $("#voucherNo").val(ui.item.label);
+            $.ajax({
+                url: "@Url.Action("getVoucherDetails", "VoucherEntry", new { area = "" })",
+                type: "GET",
+            //dataType: "json",
+            data: { voucherNO: ui.item.label },
+            success: function (data) {
+                console.log(data);
+                $("#voucherDetails").html(data);
+            }
+        })
         },
     }).autocomplete("instance")._renderItem = function (ul, item) {
         //console.log(item);

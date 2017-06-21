@@ -47,5 +47,9 @@ namespace Imprest.Data.Facct
                 catch (Exception ex) { throw ex; }
             }
         }
+        public override void openConnection()
+        {
+            base.openConnection();
+        }
     }
 }

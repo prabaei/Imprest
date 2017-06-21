@@ -30,7 +30,7 @@ namespace Imprest.Data
                 sqlobject.Close();
         }
 
-        public  void openConnection()
+        public virtual void openConnection()
         {
             if (sqlobject.State == System.Data.ConnectionState.Closed)
             sqlobject.Open();

@@ -19,6 +19,8 @@ namespace Imprest
             var builder = new ContainerBuilder();
             builder.RegisterControllers(typeof(MvcApplication).Assembly);
             builder.RegisterType<FacctDb>().As<IFacctDb>();
+            builder.RegisterType<FacctService>().As<IFacctService>();
+            
             AreaRegistration.RegisterAllAreas();
             var container = builder.Build();
             DependencyResolver.SetResolver(new AutofacDependencyResolver(container));

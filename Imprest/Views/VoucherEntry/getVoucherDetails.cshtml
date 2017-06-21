@@ -1,0 +1,29 @@
+﻿@using Imprest.Data.Models.Facct
+@model IEnumerable<VoucherDetails>
+
+<style>
+    #voudetailTable tr{
+        display:block;
+        cursor:default;
+    }
+    #voudetailTable tr:hover {
+        background-color:antiquewhite;
+    }
+    #voudetailTable tr:active {
+        background-color:bisque;
+       
+    }
+</style>
+
+<table class="table" id="voudetailTable" style="display:block">
+    @foreach (var rec in Model ?? new List<VoucherDetails>())
+    {
+    <tr>
+        <td>@rec.voucherNo</td>
+        <td>@rec.Amount</td>
+        <td>@rec.NPRNO</td>
+        <td>@rec.ICCNO</td>
+        <td>@rec.comno</td>
+    </tr>
+    }
+</table>
