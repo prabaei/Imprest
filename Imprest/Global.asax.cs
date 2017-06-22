@@ -8,6 +8,7 @@ using System.Web.Mvc;
 using System.Web.Optimization;
 using System.Web.Routing;
 using Imprest.Service.Dbservice.Facct;
+using Imprest.Service.Dbservice.Imprest;
 
 namespace Imprest
 {
@@ -19,6 +20,7 @@ namespace Imprest
             builder.RegisterControllers(typeof(MvcApplication).Assembly);
           
             builder.RegisterType<FacctService>().As<IFacctService>();
+            builder.RegisterType<ImprestService>().As<IImprestService>();
             
             AreaRegistration.RegisterAllAreas();
             var container = builder.Build();

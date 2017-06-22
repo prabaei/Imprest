@@ -44,6 +44,7 @@
     <Compile Include="Facct\Voucher.cs" />
     <Compile Include="Facct\VoucherDetails.cs" />
     <Compile Include="Imprest\AccountMaster.cs" />
+    <Compile Include="Imprest\TransactionMaster.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
