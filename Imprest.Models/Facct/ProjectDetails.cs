@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Imprest.Data.Models.Facct
+namespace Imprest.Models.Facct
 {
     public class ProjectDetails
     {
@@ -18,10 +18,9 @@ namespace Imprest.Data.Models.Facct
 
         public string voucherNo { get; set; }
         public decimal Amount { get; set; }
-       
+
         public string chequno { get; set; }
 
         public string comno { get; set; }
-        
     }
 }

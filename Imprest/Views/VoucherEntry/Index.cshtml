@@ -8,12 +8,43 @@
     .ui-menu-item{
         background-color:beige;
     }
+    /*.modal{
+        display:none;
+        position:fixed;
+        z-index:22;
+        left:0;
+        top:0;
+        width:100%;
+        height:100%;
+        overflow:auto;
+        background-color:rgba(0,0,10,0.4);
+    }
+    .modal-content {
+    background-color: #fefefe;
+    margin: 15% auto; 
+    padding: 20px;
+    border: 1px solid #888;
+    width: 100%;
+}*/
 </style>
 <input type="text" id="voucherNo"/>
+<input type="text" id="AccountNo" />
+<input type="text" id="Name" />
+<input type="text" id="ProjectNo" />
+<input type="text" id="CommitNo" />
+<input type="text" id="VoucherType" />
+<input type="text" id="ChequeNo" />
 
-<div id="voucherDetails">
-    
+<div id="myModal" class="modal">
+    <div class="modal-content">
+        <span class="close">&times;</span>
+        <div id="voucherDetails">
+
+        </div>
+    </div>
+
 </div>
+
 
 <script>
     $("#voucherNo").autocomplete({
@@ -41,6 +72,9 @@
             success: function (data) {
                 console.log(data);
                 $("#voucherDetails").html(data);
+                $("#myModal").show();
+                setTimeout(function () { adjustTable(); }, 1000);
+                //adjustTable();
             }
         })
         },

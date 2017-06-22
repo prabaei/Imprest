@@ -1,11 +1,12 @@
-﻿using Imprest.Data.Facct;
-using Imprest.Data.Models.Facct;
+﻿
+using Imprest.Service.Dbservice.Facct;
 using System;
 using System.Collections.Generic;
 using System.Data.SqlClient;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using Imprest.Models.Facct;
 
 namespace Imprest.Controllers
 {
@@ -21,6 +22,11 @@ namespace Imprest.Controllers
         public ActionResult Index()
         {
             return View();
+        }
+
+        public ActionResult setDetails(string voucherNO,string amount,string comno,string projNO,string vouchTy,string cheqno,string inst)
+        {
+            return null;
         }
 
         #region AutocompleteRequest

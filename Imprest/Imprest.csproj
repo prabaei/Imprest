@@ -309,9 +309,13 @@
     <Content Include="Scripts\jquery-1.10.2.min.map" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Imprest.Data\Imprest.Data.csproj">
-      <Project>{9764f5a4-9583-467d-ae39-b26057d064fe}</Project>
-      <Name>Imprest.Data</Name>
+    <ProjectReference Include="..\Imprest.Models\Imprest.Models.csproj">
+      <Project>{0ff04162-f04f-4b37-81d4-0902b8cfd88c}</Project>
+      <Name>Imprest.Models</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Imprest.Service\Imprest.Service.csproj">
+      <Project>{91d1561d-a1bc-4320-90b6-4679d4058177}</Project>
+      <Name>Imprest.Service</Name>
     </ProjectReference>
   </ItemGroup>
   <PropertyGroup>

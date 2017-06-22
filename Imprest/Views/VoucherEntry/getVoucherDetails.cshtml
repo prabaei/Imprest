@@ -10,15 +10,15 @@
         background-color:antiquewhite;
     }
    
-    td{
-        text-align:center;
-        padding:12px;
-    }
+td{
+    width:auto;
+}
     #TableHeading tr  td{
         font:bold;
     }
   
 </style>
+
 <table style="border:solid red 2px" id="TableHeading">
     <tr>
         <td>voucher no</td>
@@ -31,7 +31,7 @@
     </tr>
 </table>
 
-<table  id="voudetailTable" style="display:block">
+<table  id="voudetailTable" style="display:block" class="table table">
     @foreach (var rec in Model ?? new List<ProjectDetails>())
     {
     <tr>
@@ -41,44 +41,54 @@
         <td>@rec.projectNo</td>
         <td>@rec.coorname</td>
         <td>@rec.projectType</td>
-        <td><button>Pick</button></td>
+        <td><a href="@Url.Action("setDetails", "VoucherEntry",new { area="", voucherNO = rec.voucherNo,amount=rec.Amount,comno=rec.comno,projNO = rec.projectNo,vouchTy= rec.projectType,cheqno=rec.chequno,inst=rec.InstituteId })">Pick</a></td>
     </tr>
     }
 </table>
 <script>
-    $(document).ready(function () {
-        var arrOfTable1 = [0,0,0,0,0,0,0];
-        var tableEle=[];
-    i = 0;
-        $("#voudetailTable  td").each(function (ind, ele) {
-           // console.log(Math.max($(this).width(),arrOfTable1[i]));
-            //tableEle.push($(this));
-            arrOfTable1[i]=(Math.max($(this).width(), arrOfTable1[i]));
-            i++;
-            if (i == 7) {
-                i = 0;
-            }
-        });
-        i = 0;
-        $("#TableHeading td").each(function (ind, ele) {
-            var colwidth = $(this).width();
-            arrOfTable1[i]=((Math.max(arrOfTable1[i], colwidth)));
-            $(this).width(arrOfTable1[i]);
-            i++;
-        });
-        i = 0;
-        $("#voudetailTable  td").each(function (ind, ele) {
-            //console.log(Math.max($(this).width(), arrOfTable1[i]));
-            //tableEle.push($(this));
-            //arrOfTable1.push(Math.max($(this).width(), arrOfTable1[i]));
-            console.log($(this));
-            console.log(i);
-            $(this).width(arrOfTable1[i]);
-            i++
-            if (i == 7) {
-                i = 0;
-            }
-        });
-
-    });
+    //function adjustTable() {
+        
+    //    var arrOfTable1 = [0,0,0,0,0,0,0];
+    //    //var tableEle=[];
+    //i = 0;
+    ////$("#TableHeading tr:first-child td").each(function (ind, ele) {
+    ////    console.log($(this).outerWidth());
+      
+    ////    //console.log(Math.max(Math.abs($(this).width()), arrOfTable1[i]));
+    ////        //tableEle.push($(this));
+    ////    arrOfTable1[i] = (Math.max(Math.abs($(this).outerWidth()), arrOfTable1[i]));
+    ////        console.log(arrOfTable1[i]);
+    ////        i++;
+    ////    });
+       
+    //    i = 0;
+    //    $("#voudetailTable tr:first td").each(function (ind, ele) {
+    //        //console.log(Math.max($(this).width(), arrOfTable1[i]));
+    //        //tableEle.push($(this));
+    //        arrOfTable1[i] = (Math.max(Math.abs($(this).outerWidth()), arrOfTable1[i]));
+    //        console.log((Math.max(Math.abs($(this).outerWidth()), arrOfTable1[i])));
+    //        //console.log($(this));
+    //        //console.log(i);
+    //        //$(this).width(arrOfTable1[i]);
+    //        i++
+    //        //if (i == 7) {
+    //        //    i = 0;
+    //        //}
+    //    });
+    //    i = 0;
+    //    $("#TableHeading tr:first-child td").each(function (ind, ele) {
+    //       $(this).outerWidth(arrOfTable1[i]);
+    //        i++;
+    //    });
+    //    i = 0;
+    //    //$("#voudetailTable tr td").each(function (ind, ele) {
+    //    //    $(this).outerWidth(arrOfTable1[i]);
+    //    //    i++;
+    //    //    if (i == 7) { i = 0; }
+                
+    //    //});
+       
+    //    console.log(arrOfTable1)
+    //    $('td').css('text-align', 'center');
+    //};
 </script>

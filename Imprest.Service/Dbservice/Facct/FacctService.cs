@@ -1,4 +1,5 @@
-﻿using Imprest.Data.Models.Facct;
+﻿using Imprest.Data.Facct;
+using Imprest.Models.Facct;
 using System;
 using System.Collections.Generic;
 using System.Data.SqlClient;
@@ -6,7 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Imprest.Data.Facct
+namespace Imprest.Service.Dbservice.Facct
 {
     public class FacctService : IFacctService
     {
@@ -117,7 +118,7 @@ namespace Imprest.Data.Facct
             string cmstlstCmd = string.Empty;
 
             List<ProjectDetails> ProjDetailslist = new List<ProjectDetails>();
-            foreach(var single in vouchDetails)
+            foreach (var single in vouchDetails)
             {
                 if (!string.IsNullOrEmpty(single.NPRNO))
                 {
@@ -166,9 +167,9 @@ namespace Imprest.Data.Facct
                     }
                 }
             }
-                
-           
-            
+
+
+
             return ProjDetailslist;
         }
         public string getTableName(int searchfrom)
@@ -181,7 +182,5 @@ namespace Imprest.Data.Facct
             nextshortstr = nextshortstr.Substring(nextshortstr.Length - 2);
             return string.Format("VOU{0}{1}", searshortstr.Trim(), nextshortstr.Trim());
         }
-
-
     }
 }

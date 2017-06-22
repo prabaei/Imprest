@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Imprest.Data.Models.Facct
+namespace Imprest.Models.Facct
 {
     public class VoucherDetails
     {
@@ -13,9 +13,7 @@ namespace Imprest.Data.Models.Facct
         public string NPRNO { get; set; }
         public string ICCNO { get; set; }
         public string chequno { get; set; }
-    
+
         public string comno { get; set; }
-        
-        
     }
 }
