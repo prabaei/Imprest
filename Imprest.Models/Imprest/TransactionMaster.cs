@@ -18,6 +18,7 @@ namespace Imprest.Models.Imprest
         public decimal amount { get; set; }
         public string bankdate { get; set; }
         public int vouchertype { get; set; }
+        public string ChequeNo { get; set; }
         public string chequedate { get; set; }
         public string narration { get; set; }
         public string remarks { get; set; }

@@ -1,4 +1,4 @@
-﻿
+﻿@model Imprest.Models.Imprest.TransactionMaster
 @{
     ViewBag.Title = "Index";
 }
@@ -27,13 +27,16 @@
     width: 100%;
 }*/
 </style>
+
+@Html.TextBoxFor(m => m.institute, new { } )
+@Html.TextBoxFor(m => m.accountno, new { })
+@Html.TextBoxFor(m => m.name, new { })
+@Html.TextBoxFor(m => m.projectNo, new { })
+@Html.TextBoxFor(m => m.commitno, new { })
+@Html.TextBoxFor(m => m.chequedate, new { })
+@Html.TextBoxFor(m => m.ChequeNo, new { })
 <input type="text" id="voucherNo"/>
-<input type="text" id="AccountNo" />
-<input type="text" id="Name" />
-<input type="text" id="ProjectNo" />
-<input type="text" id="CommitNo" />
-<input type="text" id="VoucherType" />
-<input type="text" id="ChequeNo" />
+
 
 <div id="myModal" class="modal">
     <div class="modal-content">
@@ -42,7 +45,6 @@
 
         </div>
     </div>
-
 </div>
 
 

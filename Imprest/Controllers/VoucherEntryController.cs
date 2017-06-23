@@ -8,6 +8,7 @@ using System.Web;
 using System.Web.Mvc;
 using Imprest.Models.Facct;
 using Imprest.Service.Dbservice.Imprest;
+using Imprest.Models.Imprest;
 
 namespace Imprest.Controllers
 {
@@ -23,12 +24,16 @@ namespace Imprest.Controllers
         // GET: VoucherEntry
         public ActionResult Index()
         {
-            return View();
+            return View(new TransactionMaster());
         }
 
         public ActionResult setDetails(string voucherNO,string amount,string comno,string projNO,string vouchTy,string cheqno,string inst)
         {
             var accountDetailsList=_imprestservice.getAccountDetail(inst);
+            if (accountDetailsList.Count() > 1)
+            {
+
+            }
             return null;
         }
 
